@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Results Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 Academic Results Tracker</h1>
+            <p>Track your academic journey from 1st grade to competitive exams</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('school')">School Results (1st-12th)</button>
+            <button class="tab" onclick="switchTab('competitive')">Competitive Exams</button>
+            <button class="tab" onclick="switchTab('view')">View All Results</button>
+        </div>
+
+        <div class="content">
+            <!-- School Results Tab -->
+            <div id="school" class="tab-content active">
+                <h2>Add School Result</h2>
+                <form id="schoolForm">
+                    <div class="form-group">
+                        <label>Grade/Class</label>
+                        <select id="grade" required>
+                            <option value="">Select Grade</option>
+                            <option value="1st">1st Grade</option>
+                            <option value="2nd">2nd Grade</option>
+                            <option value="3rd">3rd Grade</option>
+                            <option value="4th">4th Grade</option>
+                            <option value="5th">5th Grade</option>
+                            <option value="6th">6th Grade</option>
+                            <option value="7th">7th Grade</option>
+                            <option value="8th">8th Grade</option>
+                            <option value="9th">9th Grade</option>
+                            <option value="10th">10th Grade</option>
+                            <option value="11th">11th Grade</option>
+                            <option value="12th">12th Grade</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Academic Year</label>
+                        <input type="text" id="schoolYear" placeholder="e.g., 2020-2021" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Overall Percentage/CGPA</label>
+                        <input type="text" id="overallScore" placeholder="e.g., 85% or 9.2 CGPA" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Subject-wise Marks (Optional)</label>
+                        <div id="subjectsContainer">
+                            <div class="subject-input">
+                                <input type="text" placeholder="Subject name" class="subject-name">
+                                <input type="text" placeholder="Marks/Grade" class="subject-marks">
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-secondary" onclick="addSubjectField()">+ Add Subject</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Additional Notes</label>
+                        <textarea id="schoolNotes" rows="3" placeholder="Any achievements, awards, or remarks..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn">Save School Result</button>
+                </form>
+            </div>
+
+            <!-- Competitive Exams Tab -->
+            <div id="competitive" class="tab-content">
+                <h2>Add Competitive Exam Result</h2>
+                <form id="competitiveForm">
+                    <div class="form-group">
+                        <label>Exam Name</label>
+                        <input type="text" id="examName" placeholder="e.g., JEE Main, NEET, CAT, GATE" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Exam Year</label>
+                        <input type="text" id="examYear" placeholder="e.g., 2024" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Score/Rank</label>
+                        <input type="text" id="examScore" placeholder="e.g., 250/300 or Rank 1234" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Percentile (if applicable)</label>
+                        <input type="text" id="percentile" placeholder="e.g., 98.5%">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Section-wise Scores (Optional)</label>
+                        <div id="sectionsContainer">
+                            <div class="subject-input">
+                                <input type="text" placeholder="Section name" class="section-name">
+                                <input type="text" placeholder="Score" class="section-score">
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-secondary" onclick="addSectionField()">+ Add Section</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Additional Details</label>
+                        <textarea id="examNotes" rows="3" placeholder="Attempt number, center, qualifications, etc..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn">Save Exam Result</button>
+                </form>
+            </div>
+
+            <!-- View Results Tab -->
+            <div id="view" class="tab-content">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h4 id="schoolCount">0</h4>
+                        <p>School Results</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4 id="examCount">0</h4>
+                        <p>Competitive Exams</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4 id="totalCount">0</h4>
+                        <p>Total Records</p>
+                    </div>
+                </div>
+
+                <h2>School Results (1st - 12th)</h2>
+                <div id="schoolResults" class="results-display"></div>
+
+                <h2 style="margin-top: 40px;">Competitive Exam Results</h2>
+                <div id="competitiveResults" class="results-display"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>Made with ❤️ for tracking academic excellence | Data stored locally in your browser</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
